@@ -9,7 +9,9 @@ COPY ../modules/php /tmp/php
 # 编译 Nginx
 WORKDIR /tmp/php
 RUN ./buildconf --force
-RUN ./configure --with-iconv \
+RUN ./configure --prefix=/usr/local/php \
+    --with-config-file-path=/usr/local/php/etc \
+    --with-iconv \
     --with-openssl \
     --with-pdo-mysql \
     --enable-bcmath \
